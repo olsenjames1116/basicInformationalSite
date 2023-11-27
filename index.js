@@ -6,14 +6,21 @@ const port = 8080;
 
 const requestListener = async (request, response) => {
 	try {
-		const data = await fs.readFile(__dirname + '/index.html');
 		response.setHeader('Content-Type', 'text/html');
-		response.writeHead(200);
-		response.end(data);
+		switch (request.url) {
+			case '/about':
+				const data = await fs.readFile(__dirname + '/about.html');
+				response.writeHead(200);
+				response.end(data);
+				break;
+		}
+		// const data = await fs.readFile(__dirname + '/index.html');
+		// response.writeHead(200);
+		// response.end(data);
 	} catch (error) {
-		response.writeHead(404, { 'Content-Type': 'text/html' });
-		fs.readFile(__dirname + '/404.html');
-		response.end();
+		response.writeHead(404);
+		const data = await fs.readFile(__dirname + '/404.html');
+		response.end(data);
 	}
 };
 
