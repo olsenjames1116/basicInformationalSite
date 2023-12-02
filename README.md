@@ -1,10 +1,9 @@
 # basicInformationalSite
 
-A barebones site that provides server-side routing using Node.js and its supplied modules.
+A barebones site that provides server-side routing using Express and its supplied modules.
 
 This project highlights:
 
 - Node.js
-- fs module
-- http module
+- Express
 - Server-side routing
